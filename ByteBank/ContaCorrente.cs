@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,23 @@ namespace ByteBank
 
         public int Numero { get; } //campo somente leitura
 
-        public int Agencia{ get; }
+        public int _agencia;
+
+        public int Agencia{
+            get
+            {
+                return _agencia;
+            }
+            set 
+            { 
+                if (value <= 0)
+                {
+                    return;
+                }
+                _agencia = value; 
+            }
+            
+        }
 
         private double _saldo = 100;
         public double Saldo
@@ -39,6 +56,8 @@ namespace ByteBank
 
         public ContaCorrente(int agencia, int numero)
         {
+
+
             Agencia = agencia;
             Numero = numero;
 

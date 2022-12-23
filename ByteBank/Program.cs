@@ -14,12 +14,17 @@ namespace ByteBank
             {
                 Metodo();
             }
-            catch(NullReferenceException erro)
+            catch (DivideByZeroException e)
             {
-                Console.WriteLine(erro.StackTrace);
+                Console.WriteLine("Não é possível divisão por zero.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 Console.WriteLine("Aconteceu um erro!");
             }
-            
+
             Console.ReadLine();
         }
 
@@ -52,10 +57,11 @@ namespace ByteBank
                 return numero / divisor;
             }
 
-            catch(DivideByZeroException erro)
+            catch(DivideByZeroException)
             {
-                Console.WriteLine(erro.Message);
+                Console.WriteLine($"Exceção com numero= {numero} e { divisor} = {divisor}");
                 throw;
+                Console.WriteLine("Código depois do throw");
             }
         }
     }
